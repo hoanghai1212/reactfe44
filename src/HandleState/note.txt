@@ -1,0 +1,3 @@
+B1: Dàn layout
+B2: Xác định nguồn dữ liệu thay đổi => tổ chức lưu trữ
+B3: Xây dựng chức năng
