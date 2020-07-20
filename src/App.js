@@ -1,5 +1,7 @@
 import React from 'react';
-import BaiTap2 from './Props/BaiTap2';
+import BTGH from './Props/BaiTapGioHangProps/BTGH';
+// import DemoPropsFunction from './Props/DemoPropsFunction/DemoPropsFunction';
+// import BaiTap2 from './Props/BaiTap2';
 // import DemoProps from './Props/DemoProps';
 // import EXRenderMap from './RenderWithMap/EXRenderMap';
 // import RenderWithMap from './RenderWithMap/RenderWithMap';
@@ -21,7 +23,9 @@ function App()
       {/* <RenderWithMap /> */}
       {/* <EXRenderMap /> */}
       {/* <DemoProps /> */}
-      <BaiTap2 />
+      {/* <BaiTap2 /> */}
+      {/* <DemoPropsFunction /> */}
+      <BTGH />
     </div>
   );
 }

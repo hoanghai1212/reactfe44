@@ -1,3 +1,9 @@
 B1: Dàn layout
 B2: Xác định nguồn dữ liệu thay đổi => tổ chức lưu trữ
 B3: Xây dựng chức năng
+
+Nơi lưu trữ state đáp ứng 2 yêu cầu
+1/ Phải chứa giao diện (trực tiếp or gián tiếp)
+2/ Phải chứa nút xử lý
+
+Lưu ý: Các giá trị nào tính toán được sẽ không đưa vào lưu trữ
