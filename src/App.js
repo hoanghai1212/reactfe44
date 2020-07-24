@@ -1,5 +1,6 @@
-import React from 'react';
-import BTGH from './Props/BaiTapGioHangProps/BTGH';
+import React from "react";
+import BaiTapGioHangRedux from "./ReduxDemo/BaiTapGioHangRedux/BaiTapGioHangRedux";
+// import BTGH from './Props/BaiTapGioHangProps/BTGH';
 // import DemoPropsFunction from './Props/DemoPropsFunction/DemoPropsFunction';
 // import BaiTap2 from './Props/BaiTap2';
 // import DemoProps from './Props/DemoProps';
@@ -11,8 +12,7 @@ import BTGH from './Props/BaiTapGioHangProps/BTGH';
 // import EventBinding from './EventBinding/EventBinding'
 // import HandleState from './HandleState/HandleState'
 
-function App()
-{
+function App() {
   return (
     <div className="App">
       {/* <BaiTapLayout /> */}
@@ -25,7 +25,8 @@ function App()
       {/* <DemoProps /> */}
       {/* <BaiTap2 /> */}
       {/* <DemoPropsFunction /> */}
-      <BTGH />
+      {/* <BTGH /> */}
+      <BaiTapGioHangRedux />
     </div>
   );
 }

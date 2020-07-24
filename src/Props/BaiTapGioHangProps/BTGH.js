@@ -71,6 +71,36 @@ export default class BTGH extends Component {
     });
   };
 
+  handleDeleteFromCart = (productID) => {
+    let gioHangCapNhat = [...this.state.gioHang];
+
+    gioHangCapNhat = gioHangCapNhat.filter(
+      (product) => product.maSP !== productID
+    );
+
+    this.setState({
+      gioHang: gioHangCapNhat,
+    });
+  };
+
+  handleChangeQuantity = (e, productID) => {
+    let gioHangCapNhat = [...this.state.gioHang];
+
+    let index = gioHangCapNhat.findIndex((spGH) => spGH.maSP === productID);
+
+    let type = e.target.dataset.type;
+
+    if (type === "increase") gioHangCapNhat[index].soLuong += 1;
+
+    if (type === "decrease" && gioHangCapNhat[index].soLuong > 0)   gioHangCapNhat[index].soLuong -= 1;
+
+    this.setState({
+      gioHang: gioHangCapNhat,
+    });
+  };
+
+  
+
   render() {
     return (
       <div className="container">
@@ -78,7 +108,11 @@ export default class BTGH extends Component {
           handleAddToCart={this.handleAddToCart}
           arrProduct={this.arrProduct}
         />
-        <ModalGH gioHang={this.state.gioHang} />
+        <ModalGH
+          gioHang={this.state.gioHang}
+          handleDeleteFromCart={this.handleDeleteFromCart}
+          handleChangeQuantity={this.handleChangeQuantity}
+        />
       </div>
     );
   }

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux"; //Thư viện kết nối react Component và redux store
 
-export default class ModalGH extends Component {
+class GioHangRedux extends Component {
   renderGioHang = () => {
-    let { handleChangeQuantity, handleDeleteFromCart, gioHang } = this.props;
+    let { gioHang } = this.props;
     return gioHang.map((sanPham, index) => {
       return (
         <tr key={index}>
@@ -19,9 +20,7 @@ export default class ModalGH extends Component {
           <td>
             <button
               className="btn btn-primary"
-              onClick={(e) => {
-                handleChangeQuantity(e, sanPham.maSP);
-              }}
+              onClick={(e) => {}}
               data-type="decrease"
             >
               -
@@ -29,9 +28,7 @@ export default class ModalGH extends Component {
             <span className="px-3">{sanPham.soLuong}</span>
             <button
               className="btn btn-primary"
-              onClick={(e) => {
-                handleChangeQuantity(e, sanPham.maSP);
-              }}
+              onClick={(e) => {}}
               data-type="increase"
             >
               +
@@ -43,7 +40,7 @@ export default class ModalGH extends Component {
             <button
               className="btn btn-danger"
               onClick={() => {
-                handleDeleteFromCart(sanPham.maSP);
+                this.props.xoaSanPham(sanPham.maSP);
               }}
             >
               Delete
@@ -54,39 +51,44 @@ export default class ModalGH extends Component {
     });
   };
 
-  calcTotal = () => {
-    return this.props.gioHang.reduce((tongTien, spGH, index) =>
-    {
-      return (tongTien += spGH.soLuong * spGH.giaBan);
-    }, 0);
-  };
-
   render() {
     return (
-      <div className="container">
+      <div>
         <h3 className="text-center">Cart</h3>
         <table className="table">
           <thead>
             <tr>
               <th>Mã SP</th>
-              <th>HÌnh ảnh</th>
-              <th>Tên SP</th>
+              <th>Hình ảnh</th>
+              <th>Giá bán</th>
               <th>Số lượng</th>
-              <th>Đơn giá</th>
               <th>Thành tiền</th>
               <th></th>
             </tr>
           </thead>
           <tbody>{this.renderGioHang()}</tbody>
-          <tfoot>
-            <tr>
-              <td colSpan="5"></td>
-              <td>Total</td>
-              <td>{this.calcTotal().toLocaleString()}</td>
-            </tr>
-          </tfoot>
         </table>
       </div>
     );
   }
 }
+
+//Hàm có nhiệm vụ biến đổi state của redux trở thành props của component
+const mapStateToProps = (state) => {
+  //state ứng với rootReducer
+  return {
+    gioHang: state.GioHangReducer.stateGioHang,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    xoaSanPham: (sanPhamID) => {
+      dispatch({
+        type: "REMOVE_ITEM",
+        sanPhamID,
+      });
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(GioHangRedux);

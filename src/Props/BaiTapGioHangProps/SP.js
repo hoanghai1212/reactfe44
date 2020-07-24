@@ -1,10 +1,6 @@
 import React, { Component } from "react";
-import ModalGH from "./ModalGH";
 
 export default class SP extends Component {
-  showModal = () => {
-    return <ModalGH />;
-  };
   render() {
     let { handleAddToCart, product } = this.props;
 
@@ -20,11 +16,10 @@ export default class SP extends Component {
           <h5 className="card-title">{product.tenSP}</h5>
           <p>{product.giaBan}</p>
           <button
-                    className="btn btn-primary"
-                    onClick={() =>
-                    {
-                        handleAddToCart(product);
-                    }}
+            className="btn btn-primary"
+            onClick={() => {
+              handleAddToCart(product);
+            }}
           >
             Add To Cart
           </button>
