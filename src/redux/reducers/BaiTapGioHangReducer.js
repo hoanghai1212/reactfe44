@@ -33,10 +33,24 @@ const BaiTapGioHangReducer = (state = stateDefault, action) => {
 
       gioHang = gioHang.filter((product) => product.maSP !== action.sanPhamID);
 
-      state.stateGioHang = gioHang;
       return { ...state, stateGioHang: gioHang };
     }
-    
+
+    case "CHANGE_QUANTITY": {
+      let gioHang = [...state.stateGioHang];
+
+      let product = gioHang.find((item) => item === action.sanPham);
+
+      if (!action.tangGiam && product.soLuong > 1) {
+        product.soLuong -= 1;
+      } else if (action.tangGiam) {
+        product.soLuong += 1;
+      }
+
+      // action.tangGiam ? (product.soLuong += 1) : (product.soLuong -= 1);
+
+      return { ...state, stateGioHang: gioHang };
+    }
 
     default:
       return { ...state };

@@ -20,22 +20,24 @@ class GioHangRedux extends Component {
           <td>
             <button
               className="btn btn-primary"
-              onClick={(e) => {}}
-              data-type="decrease"
+              onClick={() => {
+                this.props.thayDoiSoLuong(sanPham, false);
+              }}
             >
               -
             </button>
             <span className="px-3">{sanPham.soLuong}</span>
             <button
               className="btn btn-primary"
-              onClick={(e) => {}}
-              data-type="increase"
+              onClick={() => {
+                this.props.thayDoiSoLuong(sanPham, true);
+              }}
             >
               +
             </button>
           </td>
-          <td>{sanPham.giaBan}</td>
-          <td>{sanPham.soLuong * sanPham.giaBan}</td>
+          <td>{sanPham.giaBan.toLocaleString()}</td>
+          <td>{(sanPham.soLuong * sanPham.giaBan).toLocaleString()}</td>
           <td>
             <button
               className="btn btn-danger"
@@ -67,6 +69,19 @@ class GioHangRedux extends Component {
             </tr>
           </thead>
           <tbody>{this.renderGioHang()}</tbody>
+          <tfoot>
+            <tr>
+              <td colSpan="5"></td>
+              <td>Total</td>
+              <td>
+                {this.props.gioHang
+                  .reduce((tongTien, spGH, index) => {
+                    return (tongTien += spGH.soLuong * spGH.giaBan);
+                  }, 0)
+                  .toLocaleString()}
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     );
@@ -87,6 +102,14 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({
         type: "REMOVE_ITEM",
         sanPhamID,
+      });
+    },
+
+    thayDoiSoLuong: (sanPham, tangGiam) => {
+      dispatch({
+        type: "CHANGE_QUANTITY",
+        sanPham,
+        tangGiam,
       });
     },
   };
