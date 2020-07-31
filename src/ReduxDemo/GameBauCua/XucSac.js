@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import style from "./GameBauCua.module.css";
 
 class XucSac extends Component {
   renderKetQua = () => {
     let { ketQua } = this.props;
 
-    return ketQua.map((item) => {
+    return ketQua.map((item, index) => {
       return (
-        <div className="item m-3" key={item.ma} style={{ width: "30%" }}>
+        <div className="item m-3" key={index} style={{ width: "30%" }}>
           <img
+            className={`${style.xucSac}`}
             style={{ width: "100%" }}
             src={item.hinhAnh}
             alt={item.hinhAnh}
@@ -42,10 +44,13 @@ class XucSac extends Component {
         </div>
 
         <img
-          className="mt-4"
+          className={`mt-4 ${style.xocDia}`}
           src="./img/gameBauCua/soc.png"
           alt="soc"
           style={{ width: "50%", cursor: "pointer" }}
+          onClick={() => {
+            this.props.playGame();
+          }}
         />
       </div>
     );
@@ -58,4 +63,14 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(XucSac);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    playGame: () => {
+      dispatch({
+        type: "PLAY_GAME",
+      });
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(XucSac);

@@ -17,7 +17,10 @@ class DiemThuong extends Component {
           }}
         >
           Tiền thưởng:
-          <span style={{ fontSize: "50px", color: "white" }}>{this.props.diemThuong}</span>$
+          <span style={{ fontSize: "50px", color: "white" }}>
+            {this.props.diemThuong}
+          </span>
+          $
         </button>
 
         <button
@@ -29,6 +32,9 @@ class DiemThuong extends Component {
             borderRadius: "4px",
             color: "white",
           }}
+          onClick={() => {
+            window.location.reload();
+          }}
         >
           Chơi lại
         </button>
@@ -37,9 +43,8 @@ class DiemThuong extends Component {
   }
 }
 
-const mapStateToProps = (state) =>
-{
-    return {
+const mapStateToProps = (state) => {
+  return {
     diemThuong: state.GameBauCuaReducer.diemThuong,
   };
 };

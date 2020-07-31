@@ -4,5 +4,43 @@
 }
 
 .gameBauCua {
-    font-family: fPony;
+  font-family: fPony;
 }
+
+@keyframes animBauCua {
+  0% {
+    transform: translateX(-10%);
+  }
+
+  50% {
+    transform: translateX(10%);
+  }
+
+  100% {
+    transform: translateX(-10%);
+  }
+}
+
+.xocDia {
+  animation: animBauCua 0.5s infinite;
+}
+
+@keyframes xucSac {
+  0% {
+    transform: scale(100%);
+  }
+
+  50% {
+    transform: scale(120%);
+  }
+
+  100% {
+    transform: scale(100%);
+  }
+}
+
+.xucSac {
+  animation: xucSac 0.5s infinite;
+
+}
+

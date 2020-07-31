@@ -1,5 +1,6 @@
 import React from "react";
-import GameBauCua from "./ReduxDemo/GameBauCua/GameBauCua";
+import GameTaiXiu from "./ReduxDemo/GameTaiXiu/GameTaiXiu";
+// import GameBauCua from "./ReduxDemo/GameBauCua/GameBauCua";
 // import BaiTapGioHangRedux from "./ReduxDemo/BaiTapGioHangRedux/BaiTapGioHangRedux";
 // import BTGH from './Props/BaiTapGioHangProps/BTGH';
 // import DemoPropsFunction from './Props/DemoPropsFunction/DemoPropsFunction';
@@ -15,7 +16,7 @@ import GameBauCua from "./ReduxDemo/GameBauCua/GameBauCua";
 
 function App() {
   return (
-    <div className="App" style={{background: '#ffa500'}}>
+    <div className="App" >
       {/* <BaiTapLayout /> */}
       {/* <DataBinding /> */}
       {/* <EventBinding /> */}
@@ -28,7 +29,8 @@ function App() {
       {/* <DemoPropsFunction /> */}
       {/* <BTGH /> */}
       {/* <BaiTapGioHangRedux /> */}
-      <GameBauCua />
+      {/* <GameBauCua /> */}
+      <GameTaiXiu />
     </div>
   );
 }
