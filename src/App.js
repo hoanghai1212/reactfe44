@@ -1,5 +1,6 @@
 import React from "react";
-import GameTaiXiu from "./ReduxDemo/GameTaiXiu/GameTaiXiu";
+import FormValidation from "./FormValidation/FormValidation";
+// import GameTaiXiu from "./ReduxDemo/GameTaiXiu/GameTaiXiu";
 // import GameBauCua from "./ReduxDemo/GameBauCua/GameBauCua";
 // import BaiTapGioHangRedux from "./ReduxDemo/BaiTapGioHangRedux/BaiTapGioHangRedux";
 // import BTGH from './Props/BaiTapGioHangProps/BTGH';
@@ -16,7 +17,7 @@ import GameTaiXiu from "./ReduxDemo/GameTaiXiu/GameTaiXiu";
 
 function App() {
   return (
-    <div className="App" >
+    <div className="App">
       {/* <BaiTapLayout /> */}
       {/* <DataBinding /> */}
       {/* <EventBinding /> */}
@@ -30,7 +31,8 @@ function App() {
       {/* <BTGH /> */}
       {/* <BaiTapGioHangRedux /> */}
       {/* <GameBauCua /> */}
-      <GameTaiXiu />
+      {/* <GameTaiXiu /> */}
+      <FormValidation />
     </div>
   );
 }

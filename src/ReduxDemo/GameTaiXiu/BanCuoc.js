@@ -2,20 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class BanCuoc extends Component {
-  renderXucSac = () => {
-    let { danhSachXucSac } = this.props;
-    return danhSachXucSac.map((xucSac, index) => {
-      return (
-        <img
-          key={index}
-          className="mx-2"
-          style={{ width: "80px" }}
-          src={xucSac.hinhAnh}
-          alt={xucSac.hinhAnh}
-        />
-      );
-    });
-  };
   render() {
     return (
       <div className="d-flex justify-content-around mt-5">
@@ -26,10 +12,26 @@ class BanCuoc extends Component {
             height: "200px",
             fontSize: "50px",
           }}
+          onClick={() => {
+            this.props.dispatch({
+              type: "DAT_CUOC",
+              taiXiu: "TÀI",
+            });
+          }}
         >
           Tài
         </button>
-        <div>{this.renderXucSac()}</div>
+        <div className="bg-white h-100">
+          {this.props.danhSachXucSac.map((xucSac, index) => (
+            <img
+              key={index}
+              className="mx-2"
+              style={{ width: "80px" }}
+              src={xucSac.hinhAnh}
+              alt={xucSac.hinhAnh}
+            />
+          ))}
+        </div>
         <button
           className="btn btn-danger border"
           style={{
@@ -37,8 +39,11 @@ class BanCuoc extends Component {
             height: "200px",
             fontSize: "50px",
           }}
-          onClick={(event) => {
-            this.props.datcuoc(event);
+          onClick={() => {
+            this.props.dispatch({
+              type: "DAT_CUOC",
+              taiXiu: "XỈU",
+            });
           }}
         >
           Xỉu
@@ -48,18 +53,8 @@ class BanCuoc extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    danhSachXucSac: state.GameTaiXiuReducer.xucSac,
-  };
-};
+const mapStateToProps = (state) => ({
+  danhSachXucSac: state.GameTaiXiuReducer.xucSac,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    datcuoc: (event) => {
-      console.log(event.target.innerHTML);
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(BanCuoc);
+export default connect(mapStateToProps)(BanCuoc);

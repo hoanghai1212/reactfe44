@@ -40,12 +40,43 @@ const stateDefault = {
     },
   ],
   win: 0,
-  total: 0,
-  choice: "TÀI",
+  totalGame: 0,
+  choice: "TÀI", //TAI: true || XIU: false
 };
 
 const gameXucSacReducer = (state = stateDefault, action) => {
-  return { ...state };
+  switch (action.type) {
+    case "DAT_CUOC": {
+      state.choice = action.taiXiu;
+      return { ...state };
+    }
+    case "PLAY_GAME": {
+      let xucSacUpdate = [...state.xucSac];
+      for (let i = 0; i < 3; i++) {
+        const RANDOM = Math.floor(Math.random() * 6);
+        xucSacUpdate[i] = listXucSac[RANDOM];
+      }
+      state.xucSac = xucSacUpdate;
+      return { ...state };
+    }
+
+    case "TINH_DIEM": {
+      const sumXucSac = state.xucSac.reduce((sum, point) => sum + point.id, 0);
+      const checkIfAllSame = () => new Set(state.xucSac).size === 1;
+
+      if (
+        !checkIfAllSame() &&
+        ((state.choice === "TÀI" && sumXucSac > 10) ||
+          (state.choice === "XỈU" && sumXucSac < 11))
+      ) {
+        state.win++;
+      }
+      state.totalGame++;
+      return { ...state };
+    }
+    default:
+      return { ...state };
+  }
 };
 
 export default gameXucSacReducer;
