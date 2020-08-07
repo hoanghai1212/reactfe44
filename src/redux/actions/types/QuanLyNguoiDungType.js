@@ -1,0 +1,2 @@
+export const THEM_NGUOI_DUNG = "THEM_NGUOI_DUNG";
+export const SUA_NGUOI_DUNG = "SUA_NGUOI_DUNG";

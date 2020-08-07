@@ -1,5 +1,6 @@
 import React from "react";
 import FormValidation from "./FormValidation/FormValidation";
+// import ReactLifeCycle from "./ReactLifeCycle/ReactLifeCycle";
 // import GameTaiXiu from "./ReduxDemo/GameTaiXiu/GameTaiXiu";
 // import GameBauCua from "./ReduxDemo/GameBauCua/GameBauCua";
 // import BaiTapGioHangRedux from "./ReduxDemo/BaiTapGioHangRedux/BaiTapGioHangRedux";
@@ -33,6 +34,7 @@ function App() {
       {/* <GameBauCua /> */}
       {/* <GameTaiXiu /> */}
       <FormValidation />
+      {/* <ReactLifeCycle /> */}
     </div>
   );
 }

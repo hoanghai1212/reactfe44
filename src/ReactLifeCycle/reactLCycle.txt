@@ -1,0 +1,16 @@
+Nguyên nhân lỗi giao diện không nhập được
++ khi thay đổi dữ liệu input => setState được gọi => giao diện sẽ render (1)
+
++ Mặt khác value của các input trên giao diện đang được lấy từ redux (2)
+
++ Theo Life Cycle react class component thì khi setState được gọi render sẽ chạy lại, nhưng render đang theo dọi props từ redux (nguoiDuongEdit) (3) 
+
+Từ (1) (2) (3) => vòng lặp được sinh ra => Người dùng gõ phím => setState được gọi => render chạy lại => render lại lấy dữ liệu từ redux qua props (nguoiDung) edit => luôn load lại dữ liệu cũ
+
+Khắc phục: 
+    props: nguoiDuongEdit => mỗi khi click chỉnh sửa
+    state.values: người dùng nhập
+
+
+LifeCycle cũ: 
+    Bằng 1 cách nào đó trước khi giao diện render ta lấy được props gắn vào state => sau đó binding giá trị ra giao diện từ state.values
